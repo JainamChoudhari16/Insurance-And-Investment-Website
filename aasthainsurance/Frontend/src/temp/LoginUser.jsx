@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function LoginUser() {
     const [formData, setFormData] = useState({
@@ -84,9 +85,9 @@ function LoginUser() {
                                     Password
                                 </label>
                                 <div className="text-sm">
-                                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                        Forgot password?
-                                    </a>
+                                <Link to='/forgetPassword' className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                    Forgot password?
+                                </Link>
                                 </div>
                             </div>
                             <div className="mt-2">
@@ -116,7 +117,7 @@ function LoginUser() {
 
                     <p className="mt-10 text-center text-sm text-gray-500">
                         Not a member?{' '}
-                        <a href="/Register" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                        <a href="/userRegistration" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                             Register
                         </a>
                     </p>

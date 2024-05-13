@@ -9,7 +9,7 @@ import childplan from "../Images/plans/childplan.jpg";
 import health from "../Images/plans/health.jpg";
 function PlansCard({ name, imageUrl, role, to }) {
   return (
-    <div className="max-w-xs rounded overflow-hidden shadow-lg">
+    <div className="max-w-xs mx-4 rounded overflow-hidden shadow-lg bg-headerC">
       <Link to={to}>
         <div
           style={{
@@ -26,8 +26,8 @@ function PlansCard({ name, imageUrl, role, to }) {
           />
         </div>
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2 text-center">{name}</div>
-          <p className="text-base text-gray-400 font-normal text-center">
+          <div className="font-bold text-xl mb-2 text-center text-textC">{name}</div>
+          <p className="text-base text-footerC font-normal text-center">
             {role}
           </p>
         </div>
@@ -35,7 +35,7 @@ function PlansCard({ name, imageUrl, role, to }) {
     </div>
   );
 }
-function PlansSection() {
+function FinConsultancy() {
   const plans = [
     {
       id: 1,
@@ -96,9 +96,9 @@ function PlansSection() {
   ];
 
   return (
-    <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+    <section className="mx-auto px-4 sm:px-6 lg:px-4 py-12 bg-bodyC">
       <div className="text-center pb-12">
-        <h2 className="text-2xl font-bold text-indigo-600">
+        <h2 className="text-2xl font-bold text-textC">
           Check out our various investment plans
         </h2>
       </div>
@@ -117,4 +117,4 @@ function PlansSection() {
   );
 }
 
-export default PlansSection;
+export default FinConsultancy;

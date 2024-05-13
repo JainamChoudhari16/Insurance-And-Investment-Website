@@ -26,29 +26,31 @@ function TaxCalculator() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full sm:w-3/4 lg:w-2/3 xl:w-1/2">
+    <div className="flex justify-center items-center min-h-screen bg-bodyC text-textC">
+      <div className="bg-headerC p-8 rounded-lg shadow-md w-full sm:w-3/4 lg:w-2/3 xl:w-1/2">
         <h2 className="text-2xl font-bold mb-4">Tax Calculator</h2>
-        <div className="mb-4">
-          <label className="block mb-2">Total Income (₹):</label>
-          <input
-            className="border rounded px-2 py-1 w-40"
-            type="number"
-            value={income}
-            onChange={(e) => setIncome(parseFloat(e.target.value))}
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block mb-2">Deductions (₹):</label>
-          <input
-            className="border rounded px-2 py-1 w-40"
-            type="number"
-            value={deductions}
-            onChange={(e) => setDeductions(parseFloat(e.target.value))}
-          />
+        <div className="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label className="block mb-2">Total Income (₹):</label>
+            <input
+              className="border rounded px-2 py-1 w-full"
+              type="number"
+              value={income}
+              onChange={(e) => setIncome(parseFloat(e.target.value))}
+            />
+          </div>
+          <div>
+            <label className="block mb-2">Deductions (₹):</label>
+            <input
+              className="border rounded px-2 py-1 w-full"
+              type="number"
+              value={deductions}
+              onChange={(e) => setDeductions(parseFloat(e.target.value))}
+            />
+          </div>
         </div>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-bodyC hover:bg-headerC text-textC font-bold py-2 px-4 rounded"
           onClick={calculateTax}
         >
           Calculate Tax

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import logo from "../Images/aastha-logo.png";
+import { Link } from "react-router-dom";
+import logo from "../Images/logo.png";
+import { BiSolidLogIn } from "react-icons/bi";
 
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
+  
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
@@ -14,103 +15,49 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-gray-100 shadow sticky top-0 z-50">
-      <nav className="container mx-auto px-4 lg:px-6 py-3 flex justify-between items-center">
-        <div className="flex items-center">
-          <Link to="/" className="flex items-center">
-            <img src={logo} className="h-16 lg:h-20" alt="Logo" />
-            <h2 className="font-mono text-lg lg:text-2xl font-bold text-gray-800 ml-3">
-              Aastha Insurance & Investments
-            </h2>
+    <header className="bg-headerC p-4 h-1/5">
+      <nav className="container mx-auto flex justify-between items-center">
+        <div className="flex items-center space-x-4">
+          <Link to="/">
+            <img src={logo} alt="Logo" className="w-16 h-16" />
           </Link>
-          <ul
-            className={`lg:flex space-x-8 ml-8 ${
-              isDropdownOpen ? "block" : "hidden"
-            }`}
-          >
+          <h2 className="text-textC text-3xl font-bold">
+            Aastha Insurance & Investments
+          </h2>
+        </div>
+        <div className="flex items-center space-x-4">
+          <ul className="flex space-x-4">
             <li>
-              <NavLink
-                to="/"
-                exact
-                activeClassName="text-orange-700"
-                className="text-gray-700 hover:text-orange-700"
-                onClick={closeDropdown}
-              >
-                Home
-              </NavLink>
+              <Link to="/" className="text-textC" onClick={closeDropdown}>Home</Link>
             </li>
             <li>
-              <NavLink
-                to="/about"
-                activeClassName="text-orange-700"
-                className="text-gray-700 hover:text-orange-700"
-                onClick={closeDropdown}
-              >
-                About
-              </NavLink>
+              <Link to="/about" className="text-textC" onClick={closeDropdown}>About</Link>
             </li>
-            <li>
-              <NavLink
-                to="/contact"
-                activeClassName="text-orange-700"
-                className="text-gray-700 hover:text-orange-700"
-                onClick={closeDropdown}
-              >
-                Contact
-              </NavLink>
-            </li>
-            <li
-              className="relative"
-              onMouseEnter={toggleDropdown}
-              onMouseLeave={closeDropdown}
-            >
-              <NavLink
-                to="/insurance"
-                className="text-gray-700 hover:text-orange-700 cursor-pointer"
-                onClick={closeDropdown}
-              >
-                Products
-              </NavLink>
+            <li className="relative">
+              <button className="text-textC" onClick={toggleDropdown}>Services</button>
               {isDropdownOpen && (
-                <ul className="absolute bg-white border border-gray-200 py-2 mt-2 w-40 rounded-lg shadow-lg">
+                <ul className="absolute top-full left-0 bg-headerC p-2 z-10"> 
                   <li>
-                    <NavLink
-                      to="/products/plans"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                      activeClassName="text-orange-700"
-                    >
-                      Plans
-                    </NavLink>
+                    <Link to="services/insurance" className="text-textC" onClick={closeDropdown}>Insurance</Link>
                   </li>
                   <li>
-                    <NavLink
-                      to="/products/mutualfunds"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                      activeClassName="text-orange-700"
-                    >
-                      Mutual Funds
-                    </NavLink>
+                    <Link to="services/investment" className="text-textC" onClick={closeDropdown}>Investment</Link>
                   </li>
                   <li>
-                    <NavLink
-                      to="/products/all-calculators"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                      activeClassName="text-orange-700"
-                    >
-                      Calculators
-                    </NavLink>
+                    <Link to="services/calculators" className="text-textC" onClick={closeDropdown}>Calculators</Link>
+                  </li>
+                  <li>
+                    <Link to="services/finConsultation" className="text-textC" onClick={closeDropdown}>FinConsultation</Link>
                   </li>
                 </ul>
               )}
             </li>
+            <li>
+              <Link to="/contact" className="text-textC" onClick={closeDropdown}>Contact</Link>
+            </li>
           </ul>
-        </div>
-        <div>
-          <Link
-            to="https://docs.google.com/forms/d/e/1FAIpQLSePLmiQK_Mp17y8rSkbeH0YopduUKPbJ6ByvkvMzVT-z-LfvQ/viewform?embedded=true"
-            className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none "
-          >
-            Buy Policy
+          <Link to="/userLogin" className="text-textC text-xl">
+            <BiSolidLogIn />
           </Link>
         </div>
       </nav>

@@ -6,12 +6,12 @@ import lifeImage from '../Images/ins/lifeImage.png';
 import travelImage from '../Images/ins/travelImage.png';
 function InsuranceServices() {
   return (
-    <section className="our-services py-16 bg-white">
+    <section className="our-services py-8 px-4 bg-bodyC text-textC">
       <div className="container mx-auto">
-        <h4 className="sub-heading text-center text-3xl mb-8">
+        <h4 className="sub-heading text-center text-2xl mb-4">
           Services We Provide
         </h4>
-        <h2 className="heading text-center text-4xl font-bold mb-12">
+        <h2 className="heading text-center text-3xl font-bold mb-8">
           Insurance Solutions
         </h2>
         <p className="para-line text-center text-lg mb-12">
@@ -42,11 +42,6 @@ function InsuranceServices() {
             description="Ensure your loved ones' future with our life insurance solutions, offering financial security and support."
           />
           <ServiceCard
-            imageUrl={kidcareImage}
-            title="KidCare"
-            description="Protect your child's well-being with our KidCare insurance, prioritizing their health and happiness."
-          />
-          <ServiceCard
             imageUrl={healthImage}
             title="Health"
             description="Stay healthy and secure with our health insurance plans, providing coverage for your medical needs."
@@ -59,12 +54,12 @@ function InsuranceServices() {
 
 function ServiceCard({ imageUrl, title, description }) {
   return (
-    <div className="service bg-white rounded-lg p-8  text-center flex flex-col justify-center items-center">
+    <div className="service bg-headerC rounded-lg p-8  text-center flex flex-col justify-center items-center">
       <img
         src={imageUrl}
         alt={title}
         className="service-image mb-4"
-        style={{ width: "100px", height: "100px" }}
+        style={{ width: "80px", height: "80px" }}
       />
       <h2 className="service-heading text-xl font-semibold mb-4">{title}</h2>
       <p className="para-line text-lg">{description}</p>

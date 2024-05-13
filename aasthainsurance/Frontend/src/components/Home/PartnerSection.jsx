@@ -9,7 +9,7 @@ import hdfcImage from "../Images/Partners/hdfc.png";
 function PartCard({ name, imageUrl, to }) {
   return (
     <div className="inline-block w-32 h-40 mx-2 overflow-hidden relative">
-      <Link to={to} className="block w-full h-full absolute inset-0">
+      <Link to='about' className="block w-full h-full absolute inset-0">
         <img
           src={imageUrl}
           alt={name}
@@ -55,7 +55,7 @@ function PartnerSection() {
   ];
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto bg-bodyC">
       <div className="text-center">
         {partners.map((partner, index) => (
           <PartCard
