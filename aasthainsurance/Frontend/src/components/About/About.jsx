@@ -2,13 +2,12 @@ import thumbsup from "../Images/about/thumbsup.png";
 import wallet from "../Images/about/wallet.png";
 import online from "../Images/about/online.png";
 import team from "../Images/about/team.png";
-import Partners from "../Footer/Partners";
 
 function About() {
   return (
     <>
-      <div className="py-16 bg-bodyC">
-        <div className="container mx-auto px-6 text-textC md:px-12 xl:px-6">
+      <div className="py-16 bg-white">
+        <div className="container mx-auto px-6 text-gray-600 md:px-12 xl:px-6">
           <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
             <div className="md:w-5/12 lg:w-5/12">
               <img
@@ -18,10 +17,10 @@ function About() {
               />
             </div>
             <div className="md:w-7/12 lg:w-6/12">
-              <h2 className="text-2xl text-textC font-bold md:text-4xl">
+              <h2 className="text-2xl text-gray-900 font-bold md:text-4xl">
                 Welcome to Aastha Insurance and Investments!
               </h2>
-              <p className="mt-6 text-textC">
+              <p className="mt-6 text-gray-600">
                 Aastha Insurance and Investments is a premier financial firm
                 offering personalized insurance and investment solutions from
                 renowned partners like TATA-AIA and LIC. With a focus on
@@ -32,7 +31,7 @@ function About() {
                 ongoing support to help clients achieve their financial goals
                 securely.
               </p>
-              <p className="mt-4 text-textC">
+              <p className="mt-4 text-gray-600">
                 Aastha Insurance and Investments prioritizes client needs,
                 offering informed guidance and access to leading industry
                 products. With a dedication to building long-term relationships
@@ -45,7 +44,7 @@ function About() {
         </div>
       </div>
       <div>
-        <section className="valuespy-16 text-textC bg-bodyC">
+        <section className="valuespy-16">
           <div className="container mx-auto">
             <h4 className="sub-heading"></h4>
             <h2 className="heading text-3xl font-bold mb-8 text-center">
@@ -95,9 +94,6 @@ function About() {
             </div>
           </div>
         </section>
-      </div>
-      <div>
-        <Partners />
       </div>
     </>
   );

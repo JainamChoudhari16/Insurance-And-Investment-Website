@@ -29,51 +29,47 @@ function SIPDelayCalculator() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-bodyC text-textC">
-      <div className="bg-headerC p-8 rounded-lg shadow-md w-full sm:w-3/4 lg:w-2/3 xl:w-1/2">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full sm:w-3/4 lg:w-2/3 xl:w-1/2">
         <h2 className="text-2xl font-bold mb-4">SIP Delay Calculator</h2>
-        <div className="flex flex-wrap gap-4">
-          <div className="mb-4 flex-1">
-            <label className="block mb-2">Monthly Investment Amount (₹):</label>
-            <input
-              className="border rounded px-2 py-1 w-full"
-              type="number"
-              value={monthlyInvestment}
-              onChange={(e) => setMonthlyInvestment(parseFloat(e.target.value))}
-            />
-          </div>
-          <div className="mb-4 flex-1">
-            <label className="block mb-2">Expected Annual Return Rate (%):</label>
-            <input
-              className="border rounded px-2 py-1 w-full"
-              type="number"
-              value={annualReturnRate}
-              onChange={(e) => setAnnualReturnRate(parseFloat(e.target.value))}
-            />
-          </div>
+        <div className="mb-4">
+          <label className="block mb-2">Monthly Investment Amount (₹):</label>
+          <input
+            className="border rounded px-2 py-1 w-40"
+            type="number"
+            value={monthlyInvestment}
+            onChange={(e) => setMonthlyInvestment(parseFloat(e.target.value))}
+          />
         </div>
-        <div className="flex flex-wrap gap-4">
-          <div className="mb-4 flex-1">
-            <label className="block mb-2">Investment Duration (years):</label>
-            <input
-              className="border rounded px-2 py-1 w-full"
-              type="number"
-              value={investmentDuration}
-              onChange={(e) => setInvestmentDuration(parseInt(e.target.value))}
-            />
-          </div>
-          <div className="mb-4 flex-1">
-            <label className="block mb-2">Delay Period (years):</label>
-            <input
-              className="border rounded px-2 py-1 w-full"
-              type="number"
-              value={delayPeriod}
-              onChange={(e) => setDelayPeriod(parseInt(e.target.value))}
-            />
-          </div>
+        <div className="mb-4">
+          <label className="block mb-2">Expected Annual Return Rate (%):</label>
+          <input
+            className="border rounded px-2 py-1 w-40"
+            type="number"
+            value={annualReturnRate}
+            onChange={(e) => setAnnualReturnRate(parseFloat(e.target.value))}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block mb-2">Investment Duration (years):</label>
+          <input
+            className="border rounded px-2 py-1 w-40"
+            type="number"
+            value={investmentDuration}
+            onChange={(e) => setInvestmentDuration(parseInt(e.target.value))}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block mb-2">Delay Period (years):</label>
+          <input
+            className="border rounded px-2 py-1 w-40"
+            type="number"
+            value={delayPeriod}
+            onChange={(e) => setDelayPeriod(parseInt(e.target.value))}
+          />
         </div>
         <button
-          className="bg-bodyC hover:bg-headerC text-textC font-bold py-2 px-4 rounded"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={calculateMaturityAmount}
         >
           Calculate Maturity Amount

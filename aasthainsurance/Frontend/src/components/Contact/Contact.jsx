@@ -67,9 +67,12 @@ function Contact() {
   };
 
   return (
-    <div className="flex justify-center items-center">
-      <div className="w-full space-y-8 bg-bodyC p-4">
-        <p className="text-lg text-textC">
+    <div className="min-h-screen flex justify-center items-center">
+      <div className="max-w-3xl w-full space-y-8 bg-white dark:bg-gray-800  sm:rounded-lg p-8">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+          Get in touch:
+        </h2>
+        <p className="text-lg text-gray-600 dark:text-gray-400">
           Fill in the form to start a conversation
         </p>
 
@@ -83,7 +86,7 @@ function Contact() {
                 placeholder="Full Name"
                 value={formData.name}
                 onChange={handleChange}
-                className={`p-3 bg-headerC dtext-textC focus:outline-none${
+                className={`p-3 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:border-blue-500 dark:focus:border-blue-500 ${
                   errors.name && "border-red-500"
                 }`}
               />
@@ -100,7 +103,7 @@ function Contact() {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`p-3 bg-headerC text-textC focus:outline-none ${
+                className={`p-3 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:border-blue-500 dark:focus:border-blue-500 ${
                   errors.email && "border-red-500"
                 }`}
               />
@@ -117,7 +120,7 @@ function Contact() {
                 placeholder="Telephone Number"
                 value={formData.tel}
                 onChange={handleChange}
-                className={`p-3 bg-headerC text-textC focus:outline-none ${
+                className={`p-3 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:border-blue-500 dark:focus:border-blue-500 ${
                   errors.tel && "border-red-500"
                 }`}
               />
@@ -134,7 +137,7 @@ function Contact() {
                 placeholder="Your Message"
                 value={formData.message}
                 onChange={handleChange}
-                className={`p-3 bg-headerC text-textC focus:outline-none ${
+                className={`p-3 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:border-blue-500 dark:focus:border-blue-500 resize-none ${
                   errors.message && "border-red-500"
                 }`}
               ></textarea>
@@ -145,7 +148,7 @@ function Contact() {
 
             <button
               type="submit"
-              className="py-3 px-6 bg-footerC hover:bg-bodyC text-textC font-semibold rounded-lg transition duration-300 ease-in-out focus:outline-none focus:ring-2"
+              className="py-3 px-6 bg-orange-700 hover:bg-green-800 text-white font-semibold rounded-lg transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               Submit
             </button>
@@ -156,7 +159,7 @@ function Contact() {
             title="Google Maps"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3801.362120517823!2d75.90537277403347!3d17.680345583257687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5da86fd68f571%3A0x558b4160103884ad!2sAastha%20Insurance%20Investment!5e0!3m2!1sen!2sin!4v1708590894286!5m2!1sen!2sin"
             width="400"
-            height="340"
+            height="300"
             style={{ border: 0 }}
             allowFullScreen=""
             loading="lazy"

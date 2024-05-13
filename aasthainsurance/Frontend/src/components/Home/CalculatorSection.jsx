@@ -1,53 +1,59 @@
 import { Link } from "react-router-dom";
 
-function CalCard({ name, to }) {
+function CalculatorCard({ name, imageUrl, to }) {
   return (
-    <div className="max-w-xs rounded overflow-hidden shadow-lg group bg-headerC hover:bg-bodyC">
-      <Link to={to}>
+    <div className="max-w-xs rounded overflow-hidden  transition duration-300 ease-in-out transform hover:scale-105 ">
+      <Link to={to} className="block w-full h-full">
+        <img src={imageUrl} alt={name} className="w-full h-40 object-cover" />
         <div className="px-6 py-4">
-          <div className="font-bold text-textC text-xl mb-2">{name}</div>
+          <div className="font-bold text-lg mb-2 hover:text-blue-500 transition duration-300">
+            {name}
+          </div>
         </div>
       </Link>
     </div>
   );
 }
 
-function Calculators() {
+function CalculatorSection() {
   const partners = [
     {
       name: "SIP Calculator",
+      imageUrl:
+        "https://img.freepik.com/free-vector/calculator-concept-illustration_114360-1259.jpg?t=st=1709464477~exp=1709468077~hmac=577212c05302f4e9291856881dfc37929ff2a6c72deec7c264f68444cb8f3a32&w=740",
       to: "/calculator/sip-calculator",
     },
     {
       name: "Retirement Calculator",
+      imageUrl:
+        "https://img.freepik.com/premium-photo/concept-pension-retirement-plan-blue-background_185193-49796.jpg?w=826",
       to: "/calculator/retirement-calculator",
     },
     {
-      name: "SIP Delay Calculator",
-      to: "/calculator/sip-delay-calculator",
+      name: "Mortgage Calculator",
+      imageUrl:
+        "https://img.freepik.com/free-vector/flat-design-installment-illustration_23-2149402206.jpg?t=st=1709464704~exp=1709468304~hmac=3c41a6f7525dd1a96014d76daf8b0ccceae5b19634f95f1255913e489976f573&w=740",
+      to: "/calculator/mortgage-calculator",
     },
   ];
 
   return (
-    <section className="mx-auto px-8 py-12 bg-bodyC ">
-      <div className="text-center pb-12">
-        <h2 className="text-2xl font-bold text-textC">
-          Check out our various financial calculators
-        </h2>
+    <div className="container mx-auto">
+      <h3 className="text-3xl font-bold mb-8 text-center">
+        Try Our Calculators
+      </h3>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {partners.map((partner, index) => (
+          <CalculatorCard
+            key={index}
+            name={partner.name}
+            imageUrl={partner.imageUrl}
+            to={partner.to}
+          />
+        ))}
       </div>
-      <div className="container mx-auto px-2">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {partners.map((partner, index) => (
-            <CalCard
-              key={index}
-              name={partner.name}
-              to={partner.to}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+    </div>
   );
 }
 
-export default Calculators;
+export default CalculatorSection;
