@@ -1,5 +1,4 @@
-import React from 'react';
-import whyUs from '../Images/whyUs.png';
+import whyUs from '../../assets/images/whyUs.png';
 
 const WhyChooseUs = () => {
   return (
@@ -31,7 +30,7 @@ const WhyChooseUs = () => {
                   </h3>
                   <p className="para-line">
                     Experience tailored coverage and superior customer service.
-                    Our comprehensive solutions prioritize your family's
+                    Our comprehensive solutions prioritize your family&apos;s
                     security, providing peace of mind and exceptional protection
                     for your home and loved ones.
                   </p>

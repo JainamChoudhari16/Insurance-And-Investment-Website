@@ -2,29 +2,34 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import {store, persistor} from './redux/store.js';
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import Layout from "./Layout.jsx";
-import Home from "./components/Home/Home.jsx";
-import About from "./components/About/About.jsx";
+import Home from './components/Home.jsx'
+import About from './components/About.jsx';
 import Insurances from "./components/services/Insurances.jsx";
-import FinConsultancy from "./components/services/FinConsultancy.jsx";
 import Calculators from "./components/services/Calculators.jsx";
-import Investments from "./components/services/Investments.jsx";
-import Contact from "./components/Contact/Contact.jsx";
-import SIPCalculator from "./components/Features/Calculators/SIPCalculator.jsx";
-import RetirementCalculator from "./components/Features/Calculators/RetirementCalculator.jsx";
-import SIPDelayCalculator from "./components/Features/Calculators/SIPDelayCalculator.jsx";
-import ChildFutureCalculator from "./components/Features/Calculators/ChildFutureCalcualator.jsx";
-import TaxCalculator from "./components/Features/Calculators/TaxCalculator.jsx";
-import MortgageCalculator from "./components/Features/Calculators/MortgageCalculator.jsx";
-import Partners from "./components/Footer/Partners.jsx";
-import Life from "./components/services/Life.jsx";
-import PlansName from "./components/services/PlansName.jsx";
-import RegistrationForm from "./temp/RegistrationForm.jsx";
-import LoginUser from "./temp/LoginUser.jsx";
-import ForgetPassword from "./temp/ForgetPassword.jsx";
+import Contact from './components/Contact.jsx'
+import SIPCalculator from './components/Calculators/SIPCalculator.jsx';
+import RetirementCalculator from './components/Calculators/RetirementCalculator.jsx';
+import SIPDelayCalculator from './components/Calculators/SIPDelayCalculator.jsx';
+import ChildFutureCalculator from './components/Calculators/ChildFutureCalcualator.jsx';
+import TaxCalculator from './components/Calculators/TaxCalculator.jsx';
+import MortgageCalculator from './components/Calculators/MortgageCalculator.jsx'
+import Partners from './components/Partners.jsx';
+import LifeInsurance from './components/services/LifeInsurance.jsx'
+import HealthInsurance from './components/services/HealthInsurance.jsx'
+import HomeInsurance from './components/services/HomeInsurance.jsx'
+import AutoInsurance from './components/services/AutoInsurance.jsx'
+import GeneralInsurance from './components/services/GeneralInsurance.jsx'
+import Login from './pages/Login.jsx';
+import SignUp from './pages/SignUp.jsx'
 import PrivacyPolicy from "./components/Footer/PrivacyPolicy.jsx";
 import TermsConditions from './components/Footer/TermsConditions.jsx';
-
+import GetPolicy from './GetPolicy.jsx'
+import AdminLogin from "./components/admin/AdminLogin.jsx";
+import Dashboard from "./components/admin/Dashboard.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="" element={<Layout />}>
@@ -32,10 +37,12 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="services/insurance" element={<Insurances />} />
-      <Route path="life" element={<Life />} />
-      <Route path="services/investment" element={<Investments />} />
+      <Route path="life" element={<LifeInsurance />} />
+      <Route path="health" element={<HealthInsurance />} />
+      <Route path="home" element={<HomeInsurance />} />
+      <Route path="auto" element={<AutoInsurance />} />
+      <Route path="general" element={<GeneralInsurance />} />
       <Route path="services/calculators" element={<Calculators />} />
-      <Route path="services/finConsultation" element={<FinConsultancy />} />
       <Route path="/partners" element={<Partners />} />
       <Route path="/calculator/sip-calculator" element={<SIPCalculator />} />
       <Route
@@ -55,18 +62,25 @@ const router = createBrowserRouter(
         path="/calculator/mortgage-calculator"
         element={<MortgageCalculator />}
       />
-      <Route path="plans/planName" element={<PlansName />} />
-      <Route path="/userRegistration" element={<RegistrationForm/>}/>
-      <Route path="/userLogin" element={<LoginUser/>}/>
-      <Route path="/forgetPassword" element={<ForgetPassword/>}/>
+      <Route path="/signup" element={<SignUp/>}/>
+      <Route path="/login" element={<Login/>}/>
       <Route path="/terms-conditions" element={<TermsConditions/>} />
       <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
+      <Route path="/getPolicy" element={<GetPolicy />} />
+      <Route path='/admin' element = {<AdminLogin/>} />
+      <Route path='/admin/dashboard' element = {<Dashboard />} />
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <PersistGate persistor={persistor}>
+    <Provider store={store}>
+      <React.StrictMode>
+        <RouterProvider router={router} />
+      </React.StrictMode>
+    </Provider>
+  </PersistGate>
+  
 );
+

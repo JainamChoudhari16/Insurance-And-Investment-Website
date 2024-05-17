@@ -1,3 +1,5 @@
+// Import the calculatorData array
+import { calculatorData } from '../../utils/calculatorData.js';
 import { Link } from "react-router-dom";
 
 function CalCard({ name, to }) {
@@ -12,21 +14,9 @@ function CalCard({ name, to }) {
   );
 }
 
-function Calculators() {
-  const partners = [
-    {
-      name: "SIP Calculator",
-      to: "/calculator/sip-calculator",
-    },
-    {
-      name: "Retirement Calculator",
-      to: "/calculator/retirement-calculator",
-    },
-    {
-      name: "SIP Delay Calculator",
-      to: "/calculator/sip-delay-calculator",
-    },
-  ];
+function CalculatorSection() {
+  // Slice the first three items from the calculatorData array
+  const firstThreeCalculators = calculatorData.slice(0, 3);
 
   return (
     <section className="mx-auto px-8 py-12 bg-bodyC ">
@@ -37,11 +27,11 @@ function Calculators() {
       </div>
       <div className="container mx-auto px-2">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {partners.map((partner, index) => (
+          {firstThreeCalculators.map((calculator, index) => (
             <CalCard
               key={index}
-              name={partner.name}
-              to={partner.to}
+              name={calculator.name}
+              to={calculator.to}
             />
           ))}
         </div>
@@ -50,4 +40,4 @@ function Calculators() {
   );
 }
 
-export default Calculators;
+export default CalculatorSection;

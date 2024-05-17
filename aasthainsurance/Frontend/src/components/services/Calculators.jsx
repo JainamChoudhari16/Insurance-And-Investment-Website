@@ -1,4 +1,6 @@
+import React from 'react';
 import { Link } from "react-router-dom";
+import { calculatorData } from '../../utils/calculatorData.js';
 
 function CalCard({ name, to }) {
   return (
@@ -13,33 +15,6 @@ function CalCard({ name, to }) {
 }
 
 function Calculators() {
-  const partners = [
-    {
-      name: "SIP Calculator 📱",
-      to: "/calculator/sip-calculator",
-    },
-    {
-      name: "Retirement Calculator",
-      to: "/calculator/retirement-calculator",
-    },
-    {
-      name: "SIP Delay Calculator",
-      to: "/calculator/sip-delay-calculator",
-    },
-    {
-      name: "Child Future Calculator",
-      to: "/calculator/childfuture-calculator",
-    },
-    {
-      name: "Tax Calculator",
-      to: "/calculator/tax-calculator",
-    },
-    {
-      name: "Mortgage Calculator",
-      to: "/calculator/mortgage-calculator",
-    },
-  ];
-
   return (
     <section className="mx-auto px-4 sm:px-6 lg:px-4 py-12 bg-bodyC">
       <div className="text-center pb-12">
@@ -49,7 +24,7 @@ function Calculators() {
       </div>
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {partners.map((partner, index) => (
+          {calculatorData.map((partner, index) => (
             <CalCard
               key={index}
               name={partner.name}
