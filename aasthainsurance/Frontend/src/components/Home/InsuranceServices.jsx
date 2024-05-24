@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import insurancesType from '../../utils/insurancesType';
+
 function InsuranceServices() {
   return (
     <section className="our-services py-8 px-4 bg-bodyC text-textC">
@@ -22,6 +24,7 @@ function InsuranceServices() {
               img={service.img}
               title={service.title}
               description={service.desc}
+              link={service.linktopage} // Add the link prop
             />
           ))}
         </div>
@@ -30,18 +33,20 @@ function InsuranceServices() {
   );
 }
 
-function ServiceCard({ img, title, description }) {
+function ServiceCard({ img, title, description, link }) {
   return (
-    <div className="service bg-headerC rounded-lg p-8  text-center flex flex-col justify-center items-center w-40 m-2">
-      <img
-        src={img}
-        alt={title}
-        className="service-image mb-4"
-        style={{ width: "40px", height: "40px" }}
-      />
-      <h2 className="service-heading text-xl font-semibold mb-4">{title}</h2>
-      {/* <p className="para-line text-lg">{description}</p> */}
-    </div>
+    <Link to={link} className="service-link">
+      <div className="service bg-headerC rounded-lg p-8 text-center flex flex-col justify-center items-center w-64 m-2">
+        <img
+          src={img}
+          alt={title}
+          className="service-image mb-4"
+          style={{ width: "40px", height: "40px" }}
+        />
+        <h2 className="service-heading text-xl font-semibold mb-4">{title}</h2>
+        {/* <p className="para-line text-lg">{description}</p> */}
+      </div>
+    </Link>
   );
 }
 

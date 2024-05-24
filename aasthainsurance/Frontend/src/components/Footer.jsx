@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from '../assets/images/logo.png';
+// import logo from '../assets/images/logo.png';
 import { FaTwitter, FaFacebookF } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <div className="flex items-center">
-              <img src={logo} className="mr-3 h-12" alt="Logo" />
+              {/* <img src={logo} className="mr-3 h-12" alt="Logo" /> */}
               <div>
                 <h3 className="text-lg text-bodyC">
                   Aastha Insurance  &amp; Investments
@@ -75,3 +75,6 @@ export default function Footer() {
     </footer>
   );
 }
+
+
+

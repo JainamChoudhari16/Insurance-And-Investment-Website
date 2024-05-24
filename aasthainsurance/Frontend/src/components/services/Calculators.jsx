@@ -2,12 +2,17 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { calculatorData } from '../../utils/calculatorData.js';
 
-function CalCard({ name, to }) {
+function CalCard({ name, to, image }) {
   return (
     <div className="max-w-xs rounded overflow-hidden shadow-lg group bg-headerC">
       <Link to={to}>
         <div className="px-6 py-4">
-          <div className="font-bold text-textC text-xl mb-2">{name}</div>
+          <img 
+            src={image} 
+            alt={name} 
+            className="w-24 h-24 object-cover mb-2 rounded-lg" // Add rounded-lg class for rounded corners
+          />
+          <div className="font-bold text-textC text-lg mb-2">{name}</div>
         </div>
       </Link>
     </div>
@@ -24,11 +29,12 @@ function Calculators() {
       </div>
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {calculatorData.map((partner, index) => (
+          {calculatorData.map((calculator, index) => (
             <CalCard
               key={index}
-              name={partner.name}
-              to={partner.to}
+              name={calculator.name}
+              to={calculator.to}
+              image={calculator.image} // Pass the image prop
             />
           ))}
         </div>

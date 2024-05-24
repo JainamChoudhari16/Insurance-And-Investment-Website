@@ -1,5 +1,6 @@
 import imagesImports from '../utils/imgImports';
 import Partners from './Partners';
+import BackToTopButton from './Home/BackToTop';
 function About() {
   return (
     <>
@@ -10,7 +11,7 @@ function About() {
             <div className="md:w-1/2 lg:w-1/2">
               <img
                 className="w-full"
-                src={imagesImports.companyImg}
+                src={imagesImports.about}
                 alt="company-image"
               />
             </div>
@@ -93,8 +94,12 @@ function About() {
       </section>
       {/* Partners  */}
       <Partners />
+
+      <BackToTopButton/>
     </>
   );
 }
 
 export default About;
+
+

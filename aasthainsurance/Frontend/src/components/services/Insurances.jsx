@@ -5,7 +5,7 @@ import insurancesType from "../../utils/insurancesType";
 
 function Card({ title, img, desc, linktopage }) {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg flex flex-col items-center bg-headerC">
+    <div className="max-w-sm overflow-hidden flex flex-col items-center bg-headerC rounded-3xl">
       <img className="w-20 h-auto mt-4 mb-2" src={img} alt="Card" />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 text-center text-textC">{title}</div>
@@ -14,9 +14,9 @@ function Card({ title, img, desc, linktopage }) {
       <div className="px-6 pt-4 pb-2">
         <Link
           to={linktopage}
-          className="inline-block bg-footerC rounded-full px-3 py-1 text-sm font-semibold text-textC mr-2 mb-2"
+          className="inline-block bg-textC text-headerC rounded-full px-3 py-1 text-sm font-semibold hover:bg-headerC  hover:text-textC mr-2 mb-2"
         >
-          Know More
+          FIND POLICY
         </Link>
       </div>
     </div>

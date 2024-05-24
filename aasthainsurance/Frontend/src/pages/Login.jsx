@@ -1,43 +1,41 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginRequest, loginSuccess, loginFailure } from '../redux/user/userSlice';
 
 function Login() {
+    const api = "http://localhost:8080";
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const {loading, error} = useSelector((state) => state.user);
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
     const [errors, setErrors] = useState({});
-    
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormData({
-    //         ...formData,
-    //         [name]: value
-    //     });
-    //     setErrors({
-    //         ...errors,
-    //         [name]: ''
-    //     });
-    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if(!formData.email || !formData.password) {
+            return dispatch(loginFailure('Please fill in all fields.'));
+        }
         try {
-            const res = await fetch("api/login", {
+            dispatch(loginRequest());
+            const res = await fetch(`${api}/auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
-            console.log(res);
-            if (res.status === 200) {
-                navigate("/about");
-            } else {
-                setErrors({ general: res.message || 'Login failed, please try again.' });
+            const data = await res.json();
+            if (res.status !== 200) {
+                dispatch(loginFailure(data.status));
             }
+            if (res.status === 200 ) {
+                dispatch(loginSuccess(data));
+                navigate("/dashboard?tab=profile");
+            } 
         } catch (error) {
-            // console.error('Error:', error);
-            setErrors({ general: 'An error occurred, please try again.' });
+            dispatch(loginFailure('Something went wrong. Please try again.'));
         }
     };
 

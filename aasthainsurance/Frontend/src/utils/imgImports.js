@@ -13,14 +13,17 @@ import autoImage from '../assets/images/autoImage.png';
 import travelImage from '../assets/images/travelImage.png';
 import lifeImage from '../assets/images/lifeImage.png';
 import healthImage from '../assets/images/healthImage.png';
-import ulip from '../assets/images/ulip.jpg';
 import whole from '../assets/images/whole.jpg';
-import retire from '../assets/images/retirement.jpg';
-import pure from '../assets/images/pureprotection.jpg';
 import moneyback from '../assets/images/moneyback.jpg';
 import endplan from '../assets/images/EndPlan.jpg';
-import childplan from '../assets/images/childplan.jpg';
-import health from '../assets/images/health.jpg';
+import sip from '../assets/images/sip.png';
+import retire from '../assets/images/retire.png';
+import sipdelay from '../assets/images/sipdelay.png';
+import tax from '../assets/images/tax.jpg';
+import mortgage from '../assets/images/mortgage.png'
+import childprotection from '../assets/images/childprotection.png';
+import about from '../assets/images/about.png';
+import mutualfund from '../assets/images/MutualFunds.jpg';
 
 const imagesImports = {
   thumbsup,
@@ -39,14 +42,17 @@ const imagesImports = {
   travelImage,
   lifeImage,
   healthImage,
-  ulip,
   whole,
-  retire,
-  pure,
   moneyback,
   endplan,
-  childplan,
-  health,
+  sip,
+  retire,
+  tax,
+  sipdelay,
+  mortgage,
+  childprotection,
+  about,
+  mutualfund
 };
 
 export default imagesImports;

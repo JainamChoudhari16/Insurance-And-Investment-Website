@@ -6,9 +6,7 @@ function Contact() {
     tel: "",
     message: "",
   });
-
   const [errors, setErrors] = useState({});
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -21,7 +19,7 @@ function Contact() {
     e.preventDefault();
     if (validateForm()) {
       const { name, email, tel, message } = formData;
-      const mailtoLink = `mailto:?subject=New Request&body=Name: ${name}%0AEmail: ${email}%0ATelephone: ${tel}%0AMessage: ${message}`;
+      const mailtoLink = `mailto:aasthainsurance4@gmail.com?subject=New Request&body=Name: ${name}%0AEmail: ${email}%0ATelephone: ${tel}%0AMessage: ${message}`;
       window.location.href = mailtoLink;
       setFormData({
         name: "",
@@ -31,7 +29,6 @@ function Contact() {
       });
     }
   };
-
   const validateForm = () => {
     let valid = true;
     let newErrors = {};
@@ -145,7 +142,7 @@ function Contact() {
 
             <button
               type="submit"
-              className="py-3 px-6 bg-footerC hover:bg-bodyC text-textC font-semibold rounded-lg transition duration-300 ease-in-out focus:outline-none focus:ring-2"
+              className="py-3 px-6 bg-footerC hover:bg-headerC text-textC font-semibold rounded-lg transition duration-300 ease-in-out focus:outline-none focus:ring-2"
             >
               Submit
             </button>
@@ -170,3 +167,6 @@ function Contact() {
 }
 
 export default Contact;
+
+
+

@@ -1,13 +1,13 @@
-// Import the calculatorData array
 import { calculatorData } from '../../utils/calculatorData.js';
 import { Link } from "react-router-dom";
 
-function CalCard({ name, to }) {
+function CalCard({ name, to, image }) {
   return (
-    <div className="max-w-xs rounded overflow-hidden shadow-lg group bg-headerC hover:bg-bodyC">
+    <div className="max-w-xs rounded overflow-hidden shadow-lg group bg-headerC hover:bg-bodyC text-center">
       <Link to={to}>
         <div className="px-6 py-4">
-          <div className="font-bold text-textC text-xl mb-2">{name}</div>
+          <img src={image} alt={name} className="w-24 h-24 object-cover mx-auto mb-4" /> {/* Adjust the size of the image */}
+          <div className="font-bold text-textC text-lg mb-2">{name}</div> {/* Decrease the font size */}
         </div>
       </Link>
     </div>
@@ -15,7 +15,6 @@ function CalCard({ name, to }) {
 }
 
 function CalculatorSection() {
-  // Slice the first three items from the calculatorData array
   const firstThreeCalculators = calculatorData.slice(0, 3);
 
   return (
@@ -32,6 +31,7 @@ function CalculatorSection() {
               key={index}
               name={calculator.name}
               to={calculator.to}
+              image={calculator.image} // Pass the image prop to CalCard
             />
           ))}
         </div>
