@@ -1,22 +1,42 @@
-import { useState,  } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-function GetPolicy() {
+function GetPolicyHealth() {
+  const {currentuser} = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const location = useLocation();
   const { policy, insuranceType, fullName } = location.state || {};
   const [name, setName] = useState(fullName || "");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const key = localStorage.getItem('authToken');
     try {
-      const response = await axios.post("http://localhost:8080/insurance/cart");
-      console.log("Submission successful:", response.data);
-    } catch (error) {
-      console.error("Error submitting policies:", error);
-    }
-  };
-
+      const response = await axios.get(`http://localhost:8080/insurance/health/quote/${policy.id}`, {
+          headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Basic ${key}`
+          }
+      });
+  
+     
+  
+      if (response.status === 200) {  // Check the correct status code for a successful request
+          
+          console.log("Submission successful:", response.data);
+          navigate('/health')
+      } else {
+          alert("Submission failed");
+      }
+  } catch (error) {
+      console.error("Error submitting policy:", error);
+  }
+  
+  
+};
 
   return (
     <form onSubmit={handleSubmit} className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
@@ -82,4 +102,4 @@ function GetPolicy() {
   );
 }
 
-export default GetPolicy;
+export default GetPolicyHealth;

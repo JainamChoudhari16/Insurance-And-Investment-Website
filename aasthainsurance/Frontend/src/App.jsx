@@ -19,7 +19,9 @@ import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
 import PrivacyPolicy from "./components/Footer/PrivacyPolicy.jsx";
 import TermsConditions from './components/Footer/TermsConditions.jsx';
-import GetPolicy from './pages/GetPolicy.jsx'
+import GetPolicyLife from "./pages/GetPolicyLife.jsx";
+import GetPolicyHealth from "./pages/GetPolicyHealth.jsx";
+import GetPolicyHome from "./pages/GetPolicyHome.jsx";
 import Endowment from "./components/services/Endowment.jsx";
 import MoneyBack from "./components/services/MoneyBack.jsx";
 import Whole from "./components/services/Whole.jsx";
@@ -55,7 +57,10 @@ const router = createBrowserRouter(
       <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
       <Route element={<PrivateRoute/>} >
         <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path="/getPolicy" element={<GetPolicy />}/>
+        <Route path="/getPolicyLife" element={<GetPolicyLife />}/>
+        <Route path="/getPolicyHealth" element={<GetPolicyHealth />}/>
+        <Route path="/getPolicyHome" element={<GetPolicyHome />}/>
+
       </Route>
       <Route element={<AdminPrivateRoute/>} >
       </Route>

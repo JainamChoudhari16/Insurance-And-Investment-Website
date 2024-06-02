@@ -78,16 +78,17 @@ function Adminlife() {
   };
 
   const handleDelete = async () => {
-    try {
-      const res = await axios.delete(
-        `${api}/api/insurance/life/get/${selectedPolicy.id}`
-      );
-      setData(res.data);
-      setShowDeleteModal(false);
-    } catch (error) {
-      console.error("Error deleting policy: ", error);
-    }
-  };
+  try {
+    const res = await axios.delete(
+      `${api}/api/insurance/life/delete/${selectedPolicy.id}`
+    );
+    setData(data.filter(policy => policy.id !== selectedPolicy.id));
+    setShowDeleteModal(false);
+  } catch (error) {
+    console.error("Error deleting policy: ", error);
+  }
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

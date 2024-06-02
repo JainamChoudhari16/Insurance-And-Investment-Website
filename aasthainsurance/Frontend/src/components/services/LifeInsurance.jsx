@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { json, useNavigate } from "react-router-dom";
-import { FaCartArrowDown, FaTrash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import BackToTopButton from "../Home/BackToTop";
 import { useSelector } from "react-redux";
 
@@ -16,8 +15,6 @@ function LifeInsurance() {
   const [smokerStatus, setSmokerStatus] = useState([]);
   const [gender, setGender] = useState([]);
   const [age, setAge] = useState([]);
-  const [cart, setCart] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false); // Modal visibility state
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -42,32 +39,17 @@ function LifeInsurance() {
     fetchData();
   }, [policyTerm, coverageAmount, medicalTestRequired, smokerStatus, gender, age]);
 
-  const handleRemoveFromCart = (index) => {
-    setCart(prevCart => {
-      const newCart = [...prevCart];
-      newCart.splice(index, 1);
-      return newCart;
-    });
-  };
-  
-  const handleAddToCart = (policy) => {
-    const { id } = policy;
-    setCart((prevCart) => [...prevCart, { id, type: "LIFE" }]);
-  };
+
   
 
-  const handleGetQuote = async () => {
-    if (currentUser !== null) {
-      try {
-        const response = await axios.post(`${api}/getQuote`, { cart :JSON.stringify(cart) });
-        navigate('/quote', { state: { quote: response.data } });
-      } catch (error) {
-        console.error('Error getting quote:', error);
-      }
-    } else {
+  const handleGetPolicy = (policy) => {
+    console.log("Added to cart:", policy);
+    if(currentUser !== null) {
+    navigate('/getPolicyLife', { state: { policy, insuranceType : 'LIFE', fullName : currentUser.userName } });
+    }else{
       navigate('/login');
     }
-  };
+    };
 
   const handleAgeChange = (e) => {
     const value = e.target.value;
@@ -197,16 +179,17 @@ function LifeInsurance() {
               <div className="mt-4 lg:mt-0 lg:ml-4 flex justify-center items-center">
                 <button
                   className=" text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out bg-textC hover:bg-footerC"
-                  onClick={() => handleAddToCart(policy)}
+                  onClick={() => handleGetPolicy(policy)}
                 >
-                  <FaCartArrowDown />
+                  Get Policy
                 </button>
               </div>
             </div>
           ))}
         </div>
       </div>
-      {/* Cart Modal */}
+      {/*
+      Cart Modal
       {modalVisible && (
   <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
     <div className="bg-white p-8 rounded-lg shadow-lg">
@@ -219,14 +202,13 @@ function LifeInsurance() {
                 <span>{policy.id} - {policy.type}</span>
               </div>
               <div>
-                {/* Remove from cart button */}
+               
                 <button className="text-red-500" onClick={() => handleRemoveFromCart(index)}>
                   <FaTrash />
                 </button>
               </div>
             </div>
           ))}
-          {/* Get quote button */}
           <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded-lg" onClick={handleGetQuote}>
             Get Quote
           </button>
@@ -234,7 +216,7 @@ function LifeInsurance() {
       ) : (
         <p>No policies added to cart.</p>
       )}
-      {/* Close modal button */}
+
       <button className="mt-4 bg-red-500 text-white py-2 px-4 rounded-lg" onClick={() => setModalVisible(false)}>
         Close
       </button>
@@ -244,6 +226,7 @@ function LifeInsurance() {
 <button className="fixed bottom-8 right-8 bg-blue-500 text-white p-4 rounded-full shadow-lg" onClick={() => setModalVisible(true)}>
   View Cart
 </button>
+*/}
       <BackToTopButton />
     </>
   );

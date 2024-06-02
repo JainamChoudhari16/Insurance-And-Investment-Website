@@ -16,9 +16,12 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         if(!formData.email || !formData.password) {
             return dispatch(loginFailure('Please fill in all fields.'));
         }
+        const token = btoa(`${formData.email}:${formData.password}`);
+        localStorage.setItem('authToken', token);
         try {
             dispatch(loginRequest());
             const res = await fetch(`${api}/auth/login`, {

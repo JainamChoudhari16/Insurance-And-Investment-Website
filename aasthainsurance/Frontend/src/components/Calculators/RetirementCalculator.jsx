@@ -1,27 +1,31 @@
 import { useState } from "react";
 
 function RetirementCalculator() {
-  const [currentAge, setCurrentAge] = useState(0);
-  const [retirementAge, setRetirementAge] = useState(0);
-  const [annualExpenses, setAnnualExpenses] = useState(0);
+  const [currentAge, setCurrentAge] = useState(35);
+  const [retirementAge, setRetirementAge] = useState(67);
+  const [lifeExpectancy, setLifeExpectancy] = useState(85);
+  const [currentIncome, setCurrentIncome] = useState(70000);
+  const [incomeIncreaseRate, setIncomeIncreaseRate] = useState(0);
+  const [incomeNeededAfterRetirement, setIncomeNeededAfterRetirement] = useState(0);
   const [annualReturnRate, setAnnualReturnRate] = useState(0);
+  const [inflationRate, setInflationRate] = useState(3);
   const [retirementCorpus, setRetirementCorpus] = useState(0);
 
   const calculateRetirementCorpus = () => {
     const yearsToRetirement = retirementAge - currentAge;
+    const yearsInRetirement = lifeExpectancy - retirementAge;
 
-    // Convert annual expenses to yearly
-    const yearlyExpenses = annualExpenses;
+    // Calculate future value of current income at retirement age
+    const futureIncome = currentIncome * Math.pow(1 + incomeIncreaseRate / 100, yearsToRetirement);
 
-    // Convert annual return rate to yearly
-    const yearlyRate = annualReturnRate / 100;
+    // Calculate annual expenses during retirement based on the percentage of current income
+    const yearlyExpenses = futureIncome * (incomeNeededAfterRetirement / 100);
 
-    // Calculate the future value of yearly expenses during retirement
-    const futureValueExpenses =
-      yearlyExpenses * Math.pow(1 + yearlyRate, yearsToRetirement);
+    // Adjust for inflation
+    const adjustedYearlyExpenses = yearlyExpenses * Math.pow(1 + inflationRate / 100, yearsInRetirement);
 
-    // Calculate the retirement corpus needed
-    const corpusNeeded = futureValueExpenses;
+    // Calculate the retirement corpus needed using the annuity formula
+    const corpusNeeded = adjustedYearlyExpenses * ((1 - Math.pow(1 + annualReturnRate / 100, -yearsInRetirement)) / (annualReturnRate / 100));
 
     setRetirementCorpus(corpusNeeded.toFixed(2));
   };
@@ -41,7 +45,7 @@ function RetirementCalculator() {
             />
           </div>
           <div className="mr-4">
-            <label className="block mb-2">Desired Retirement Age:</label>
+            <label className="block mb-2">Planned Retirement Age:</label>
             <input
               className="border rounded px-2 py-1 w-20"
               type="number"
@@ -49,26 +53,62 @@ function RetirementCalculator() {
               onChange={(e) => setRetirementAge(parseInt(e.target.value))}
             />
           </div>
-        </div>
-        <div className="flex flex-row mb-4">
-          <div className="mr-4">
-            <label className="block mb-2">
-              Annual Expenses During Retirement (₹):
-            </label>
+          <div>
+            <label className="block mb-2">Life Expectancy:</label>
             <input
               className="border rounded px-2 py-1 w-20"
               type="number"
-              value={annualExpenses}
-              onChange={(e) => setAnnualExpenses(parseFloat(e.target.value))}
+              value={lifeExpectancy}
+              onChange={(e) => setLifeExpectancy(parseInt(e.target.value))}
+            />
+          </div>
+        </div>
+        <div className="flex flex-row mb-4">
+          <div className="mr-4">
+            <label className="block mb-2">Current Pre-Tax Income (₹/year):</label>
+            <input
+              className="border rounded px-2 py-1 w-20"
+              type="number"
+              value={currentIncome}
+              onChange={(e) => setCurrentIncome(parseFloat(e.target.value))}
+            />
+          </div>
+          <div className="mr-4">
+            <label className="block mb-2">Income Increase Rate (%/year):</label>
+            <input
+              className="border rounded px-2 py-1 w-20"
+              type="number"
+              value={incomeIncreaseRate}
+              onChange={(e) => setIncomeIncreaseRate(parseFloat(e.target.value))}
             />
           </div>
           <div>
+            <label className="block mb-2">Income Needed After Retirement (% of current income):</label>
+            <input
+              className="border rounded px-2 py-1 w-20"
+              type="number"
+              value={incomeNeededAfterRetirement}
+              onChange={(e) => setIncomeNeededAfterRetirement(parseFloat(e.target.value))}
+            />
+          </div>
+        </div>
+        <div className="flex flex-row mb-4">
+          <div className="mr-4">
             <label className="block mb-2">Expected Annual Return Rate (%):</label>
             <input
               className="border rounded px-2 py-1 w-20"
               type="number"
               value={annualReturnRate}
               onChange={(e) => setAnnualReturnRate(parseFloat(e.target.value))}
+            />
+          </div>
+          <div>
+            <label className="block mb-2">Inflation Rate (%/year):</label>
+            <input
+              className="border rounded px-2 py-1 w-20"
+              type="number"
+              value={inflationRate}
+              onChange={(e) => setInflationRate(parseFloat(e.target.value))}
             />
           </div>
         </div>

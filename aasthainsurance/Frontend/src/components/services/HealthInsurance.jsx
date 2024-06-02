@@ -39,7 +39,7 @@ function HealthInsurance() {
   const handleGetPolicy = (policy) => {
     console.log("Added to cart:", policy);
     if(currentUser !== null) {
-    navigate('/getPolicy', { state: { policy, insuranceType : 'HEALTH', fullName : currentUser.userName } });
+    navigate('/getPolicyHealth', { state: { policy, insuranceType : 'HEALTH', fullName : currentUser.userName } });
     }else{
       navigate('/login');
     }
